@@ -2,13 +2,18 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
          http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         
     <modelVersion>4.0.0</modelVersion>
+    
+    <!-- Project coordinates -->
     <groupId>com.example</groupId>
     <artifactId>my-java-app</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
+    <!-- Dependencies -->
     <dependencies>
+        <!-- JUnit for testing -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -17,8 +22,10 @@
         </dependency>
     </dependencies>
 
+    <!-- Build configuration -->
     <build>
         <plugins>
+            <!-- Compiler plugin for Java 11 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -27,6 +34,27 @@
                     <source>11</source>
                     <target>11</target>
                 </configuration>
+            </plugin>
+
+            <!-- Jar plugin to create executable JAR -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.4.1</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.example.App</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+
+            <!-- Surefire plugin to run JUnit tests -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M8</version>
             </plugin>
         </plugins>
     </build>
